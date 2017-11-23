@@ -1,0 +1,21 @@
+{
+  "name": "custom-html-audio",
+  "description": "A custom html5 audio wrapper, that allows styling and functional changes.",
+  "main": [
+    "dist/js/custom-html-audio.js"
+  ],
+  "authors": [
+    "Andreas Schönefeldt <schoenefeldt.andreas@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Andreas-Schoenefeldt/custom-html-audio",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "1.0.0",
+  "repository": "git+https://github.com/Andreas-Schoenefeldt/custom-html-audio.git"
+}

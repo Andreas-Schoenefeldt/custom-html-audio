@@ -1,0 +1,23 @@
+{
+  "name": "custom-html-audio",
+  "version": "1.0.0",
+  "description": "A custom html5 audio wrapper, that allows styling and functional changes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/Andreas-Schoenefeldt/custom-html-audio.git",
+  "author": "“Andreas <“schoenefeldt.andreas@gmail.com”> (https://github.com/Andreas-Schoenefeldt)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Andreas-Schoenefeldt/custom-html-audio/issues"
+  },
+  "homepage": "https://github.com/Andreas-Schoenefeldt/custom-html-audio#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
