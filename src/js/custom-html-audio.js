@@ -141,6 +141,11 @@
             audio.src = options.src;
             audio.style.display = 'none';
 
+            // we clean the container
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+
             // we add the markup
             container.innerHTML = template;
 

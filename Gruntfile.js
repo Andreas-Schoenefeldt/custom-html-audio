@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     var repository = {
         name: "custom-html-audio"
         , description: "A custom html5 audio wrapper, that allows styling and functional changes."
-        , version: "1.0.1" // The current Version
+        , version: "1.0.2" // The current Version
         , license : 'MIT'
         , authors: [
             "Andreas Schönefeldt <schoenefeldt.andreas@gmail.com>"

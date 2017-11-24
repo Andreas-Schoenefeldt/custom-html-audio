@@ -1,6 +1,6 @@
 {
   "name": "custom-html-audio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A custom html5 audio wrapper, that allows styling and functional changes.",
   "main": "index.js",
   "scripts": {
