@@ -1,4 +1,4 @@
-/*! custom-html-audio - v1.0.2 - 2017-11-24 
+/*! custom-html-audio - v1.0.3 - 2017-11-24 
  *  A custom html5 audio wrapper, that allows styling and functional changes.
  */
 
