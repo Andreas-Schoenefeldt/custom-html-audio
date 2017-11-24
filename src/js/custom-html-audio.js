@@ -67,11 +67,17 @@
              * @param {Object} newState
              */
             changeState = function(newState) {
+                var changed = false;
                 for (var prop in newState) {
-                    state[prop] = newState[prop];
+                    if (newState[prop] !== state[prop]) {
+                        state[prop] = newState[prop];
+                        changed = true;
+                    }
                 }
 
-                render();
+                if (changed) {
+                    render();
+                }
             },
 
             togglePlay = function () {
@@ -116,12 +122,22 @@
             audio.addEventListener('ended', function(){ changeState({ playing: false });  });
             audio.addEventListener('error', function(){ changeState({ playing: false });  });
 
-            audio.addEventListener('loadedmetadata', function(){
-                changeState({currentTime: audio.currentTime, loaded: audio.buffered.end(0), end: audio.seekable.end(0)});
-            });
+            ['loadedmetadata','progress', 'timeupdate'].forEach( function(evt) {
+                audio.addEventListener(evt, function(){
+                    var newState = {
+                        currentTime: audio.currentTime
+                    };
 
-            audio.addEventListener('timeupdate', function(){
-                changeState({currentTime: audio.currentTime, loaded: audio.buffered.end(0), end: audio.seekable.end(0)});
+                    if (audio.buffered.length) {
+                        newState.loaded = audio.buffered.end(0);
+                    }
+
+                    if (isFinite(audio.duration)){
+                        newState.end = audio.duration;
+                    }
+
+                    changeState(newState);
+                });
             });
 
             // we add the markup
