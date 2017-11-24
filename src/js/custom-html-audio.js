@@ -25,13 +25,13 @@
 
         template = '<div class="audio-controls">' +
             '<div class="audio-controls__play"></div>' +
-            '<div class="audio-controls__time">' +
-                '<div class="audio-controls__loaded"></div>' +
-                '<div class="audio-controls__played"></div>' +
-            '</div>' +
             '<div class="audio-controls__text">' +
                 '<span class="audio-controls__currentTime"></span>' +
                 '<span class="audio-controls__end"></span>' +
+            '</div>' +
+            '<div class="audio-controls__time">' +
+                '<div class="audio-controls__loaded"></div>' +
+                '<div class="audio-controls__played"></div>' +
             '</div>' +
             '<div class="audio-controls__noise"></div>' +
         '</div>',

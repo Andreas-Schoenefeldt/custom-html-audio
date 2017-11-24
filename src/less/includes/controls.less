@@ -32,14 +32,15 @@
 
 
   .audio-controls__time {
-    height: 1em;
-    width: ~"calc(100% - 108px)";
+    height: 1.1em;
+    width: ~"calc(100% - 118px)";
     background: darken(@audio-control-color, 50%);
-    display: inline-block;
+    display: block;
     position: relative;
     box-shadow: inset 1px 1px 3px rgba(0,0,0,.5);
     border-radius: @audio-control-border-radius / 2;
     overflow: hidden;
+    float: left;
   }
 
   .audio-controls__loaded, .audio-controls__played {
@@ -69,6 +70,12 @@
     }
   }
 
+
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
 
 
 }
