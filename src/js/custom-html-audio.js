@@ -42,6 +42,8 @@
     ;
 
     /**
+     * Many thanks to http://html5doctor.com/html5-audio-the-state-of-play/
+     *
      * @param {Node} audio
      * @param {Object} options
      */
@@ -98,22 +100,21 @@
              * sets all the classes and layouts according to the current state
              */
             render = function () {
+                var theEnd = isFinite(state.end) ? state.end : Math.max(state.currentTime + 1, state.loaded);
 
                 // play button
                 playBtn.classList[state.playing ? 'add' : 'remove'](CLASS_PLAYER_PLAYING);
 
                 textCurrent.innerHTML = getTimeString(state.currentTime);
-                textEnd.innerHTML = getTimeString(state.end);
+                textEnd.innerHTML =  isFinite(state.end) ? getTimeString(state.end) : '';
 
-                loaded.style.width = (state.loaded / state.end * 100) + '%';
-                played.style.width = (state.currentTime / state.end * 100) + '%';
+                loaded.style.width = (state.loaded / theEnd * 100) + '%';
+                played.style.width = (state.currentTime / theEnd * 100) + '%';
             }
         ;
 
         if (options && options.src) {
             audio = document.createElement('audio');
-            audio.src = options.src;
-            audio.style.display = 'none';
 
             // initialize events
             // thx to https://developer.mozilla.org/de/docs/Web/Guide/Events/Media_events
@@ -122,23 +123,23 @@
             audio.addEventListener('ended', function(){ changeState({ playing: false });  });
             audio.addEventListener('error', function(){ changeState({ playing: false });  });
 
-            ['loadedmetadata','progress', 'timeupdate'].forEach( function(evt) {
+            ['loadedmetadata','progress', 'timeupdate', 'durationchange'].forEach( function(evt) {
                 audio.addEventListener(evt, function(){
                     var newState = {
-                        currentTime: audio.currentTime
+                        currentTime: audio.currentTime,
+                        end: audio.duration
                     };
 
                     if (audio.buffered.length) {
-                        newState.loaded = audio.buffered.end(0);
-                    }
-
-                    if (isFinite(audio.duration)){
-                        newState.end = audio.duration;
+                        newState.loaded = audio.buffered.end(audio.buffered.length - 1);
                     }
 
                     changeState(newState);
-                });
+                }, false);
             });
+
+            audio.src = options.src;
+            audio.style.display = 'none';
 
             // we add the markup
             container.innerHTML = template;
