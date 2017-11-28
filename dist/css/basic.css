@@ -37,7 +37,8 @@
   float: left;
 }
 .audio-controls .audio-controls__loaded,
-.audio-controls .audio-controls__played {
+.audio-controls .audio-controls__played,
+.audio-controls .audio-controls__seeking {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -47,6 +48,9 @@
 .audio-controls .audio-controls__played {
   background: #fff;
   box-shadow: 0 0 56px rgba(0, 0, 0, 0.5);
+}
+.audio-controls .audio-controls__seeking {
+  background: rgba(255, 255, 255, 0.2);
 }
 .audio-controls .audio-controls__text {
   float: right;

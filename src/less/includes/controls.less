@@ -43,7 +43,7 @@
     float: left;
   }
 
-  .audio-controls__loaded, .audio-controls__played {
+  .audio-controls__loaded, .audio-controls__played, .audio-controls__seeking {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -54,6 +54,10 @@
   .audio-controls__played {
     background: @audio-control-color;
     box-shadow: 0 0 56px rgba(0,0,0,.5);
+  }
+
+  .audio-controls__seeking {
+    background: rgba(255, 255, 255, .2);
   }
 
   .audio-controls__text {

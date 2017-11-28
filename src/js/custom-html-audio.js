@@ -31,6 +31,7 @@
             '</div>' +
             '<div class="audio-controls__time">' +
                 '<div class="audio-controls__loaded"></div>' +
+                '<div class="audio-controls__seeking"></div>' +
                 '<div class="audio-controls__played"></div>' +
             '</div>' +
             '<div class="audio-controls__noise"></div>' +
@@ -49,8 +50,10 @@
      */
     return function(container, options) {
         var playBtn,
+            playTime,
             loaded,
             played,
+            seeking,
 
             textCurrent,
             textEnd,
@@ -61,6 +64,7 @@
                 playing: false,
                 end: 1,
                 loaded: 0,
+                seeking: 0,
                 currentTime: 0
             },
 
@@ -96,11 +100,21 @@
                 return mins.toFixed() + ':' + (secs < 10 ? '0' : '' ) + secs.toFixed();
             },
 
+            getEnd = function () {
+                return isFinite(state.end) ? state.end : Math.max(state.currentTime + 1, state.loaded);
+            },
+
+            getWidthPercent = function (e, el) {
+                var width = el.offsetWidth;
+                var clickPos = e.pageX - el.offsetLeft;
+                return clickPos / width * 100;
+            },
+
             /**
              * sets all the classes and layouts according to the current state
              */
             render = function () {
-                var theEnd = isFinite(state.end) ? state.end : Math.max(state.currentTime + 1, state.loaded);
+                var theEnd = getEnd();
 
                 // play button
                 playBtn.classList[state.playing ? 'add' : 'remove'](CLASS_PLAYER_PLAYING);
@@ -110,6 +124,7 @@
 
                 loaded.style.width = (state.loaded / theEnd * 100) + '%';
                 played.style.width = (state.currentTime / theEnd * 100) + '%';
+                seeking.style.width = state.seeking + '%';
             }
         ;
 
@@ -154,9 +169,18 @@
             playBtn = container.querySelector('.audio-controls__play');
             loaded = container.querySelector('.audio-controls__loaded');
             played = container.querySelector('.audio-controls__played');
+            seeking = container.querySelector('.audio-controls__seeking');
             textCurrent = container.querySelector('.audio-controls__currentTime');
             textEnd = container.querySelector('.audio-controls__end');
+            playTime = container.querySelector('.audio-controls__time');
 
+            playTime.addEventListener('click', function (e) {
+                audio.currentTime = getEnd() * getWidthPercent(e, this) / 100;
+            });
+
+            playTime.addEventListener('mousemove', function (e) { changeState({seeking:  getWidthPercent(e, this)}); });
+            playTime.addEventListener('mouseenter', function (e) { changeState({seeking: getWidthPercent(e, this)}); });
+            playTime.addEventListener('mouseleave', function () { changeState({seeking: 0}); });
 
             playBtn.addEventListener('click', togglePlay);
         } else {
