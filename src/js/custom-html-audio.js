@@ -106,7 +106,8 @@
 
             getWidthPercent = function (e, el) {
                 var width = el.offsetWidth;
-                var clickPos = e.pageX - el.offsetLeft;
+                var clickPos = e.layerX;
+
                 return clickPos / width * 100;
             },
 

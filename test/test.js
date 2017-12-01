@@ -8,3 +8,7 @@ var customAudio = new CustomHtmlAudio(audio, {
 new CustomHtmlAudio(document.getElementById('audio2'), {
     src: "SampleAudio.mp3"
 });
+
+new CustomHtmlAudio(document.getElementById('audio3'), {
+    src: "SampleAudio.mp3"
+});
