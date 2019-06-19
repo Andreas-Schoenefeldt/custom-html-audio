@@ -2,7 +2,7 @@
   "name": "custom-html-audio",
   "version": "1.0.5",
   "description": "A custom html5 audio wrapper, that allows styling and functional changes.",
-  "main": "index.js",
+  "main": "dist/js/custom-html-audio.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,10 +14,15 @@
   },
   "homepage": "https://github.com/Andreas-Schoenefeldt/custom-html-audio#readme",
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.4",
     "grunt-autoprefixer": "^3.0.4",
+    "grunt-bump": "^0.8.0",
     "grunt-contrib-less": "^1.4.1",
-    "grunt-contrib-uglify": "^3.1.0",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-uglify": "^3.4.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-prompt": "^1.3.3",
+    "grunt-shell": "^3.0.1",
+    "grunt-webpack": "^3.1.3",
+    "semver": "^6.1.1"
   }
 }
