@@ -19,6 +19,8 @@ module.exports = function(grunt) {
     const pkg = grunt.file.readJSON('package.json');
     const currentVersion = pkg.version;
 
+    repository.version = currentVersion;
+
     // define the current versions here
 
     const gruntConf = {
@@ -183,7 +185,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-prompt');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-bump');

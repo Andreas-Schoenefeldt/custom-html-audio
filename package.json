@@ -1,6 +1,5 @@
 {
   "name": "custom-html-audio",
-  "version": "1.0.5",
   "description": "A custom html5 audio wrapper, that allows styling and functional changes.",
   "main": "dist/js/custom-html-audio.js",
   "scripts": {
@@ -13,6 +12,7 @@
     "url": "https://github.com/Andreas-Schoenefeldt/custom-html-audio/issues"
   },
   "homepage": "https://github.com/Andreas-Schoenefeldt/custom-html-audio#readme",
+  "version": "1.0.6",
   "devDependencies": {
     "grunt": "^1.0.4",
     "grunt-autoprefixer": "^3.0.4",

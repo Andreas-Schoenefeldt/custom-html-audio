@@ -16,6 +16,6 @@
     "test",
     "tests"
   ],
-  "version": "1.0.5",
-  "repository": "git+https://github.com/Andreas-Schoenefeldt/custom-html-audio.git"
+  "repository": "git+https://github.com/Andreas-Schoenefeldt/custom-html-audio.git",
+  "version": "1.0.6"
 }
